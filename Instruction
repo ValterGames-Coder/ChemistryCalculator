@@ -1,0 +1,2 @@
+For import UI:
+pyuic4 <name>.ui -o <name>.py
