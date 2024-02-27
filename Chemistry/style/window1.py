@@ -15,7 +15,7 @@ class Ui_MainMenu(object):
         MainMenu.setObjectName("MainMenu")
         MainMenu.resize(400, 350)
         MainMenu.setMinimumSize(QtCore.QSize(400, 350))
-        MainMenu.setMaximumSize(QtCore.QSize(1000, 350))
+        MainMenu.setMaximumSize(QtCore.QSize(1000, 500))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainMenu.setWindowIcon(icon)
@@ -42,6 +42,10 @@ class Ui_MainMenu(object):
         self.pushButton_3.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButton_3.setObjectName("pushButton_3")
         self.verticalLayout.addWidget(self.pushButton_3)
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setMinimumSize(QtCore.QSize(0, 50))
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.verticalLayout.addWidget(self.pushButton_4)
         MainMenu.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainMenu)
@@ -53,13 +57,4 @@ class Ui_MainMenu(object):
         self.pushButton.setText(_translate("MainMenu", "Относительная молекулярная масса вещества"))
         self.pushButton_2.setText(_translate("MainMenu", "Массовая доля вещества"))
         self.pushButton_3.setText(_translate("MainMenu", "Расчет необходимой массы вещества для реакции"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainMenu = QtWidgets.QMainWindow()
-    ui = Ui_MainMenu()
-    ui.setupUi(MainMenu)
-    MainMenu.show()
-    sys.exit(app.exec_())
+        self.pushButton_4.setText(_translate("MainMenu", "Генерация рисунка органического вещества"))

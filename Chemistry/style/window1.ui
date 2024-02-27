@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>1000</width>
-    <height>350</height>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,9 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>logo.png</normaloff>logo.png</iconset>
+  </property>
+  <property name="windowFilePath">
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -86,6 +89,19 @@
       </property>
       <property name="text">
        <string>Расчет необходимой массы вещества для реакции</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Генерация рисунка органического вещества</string>
       </property>
      </widget>
     </item>
