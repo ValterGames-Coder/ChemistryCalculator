@@ -1,4 +1,6 @@
 # Chemistry Calculator
+![image](https://github.com/ValterGames-Coder/ChemistryCalculator/assets/68495491/6f8a2278-64d5-44d2-8680-11183c7e4024)
+
 ## Установка
 ### Windows:
 1. Установите windows_build.zip с https://github.com/ValterGames-Coder/ChemistryCalculator/releases
