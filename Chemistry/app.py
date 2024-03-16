@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.Qt import QUrl
 from chemlib import Compound
 
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from mendeleev import mendeleev
 from rdkit import Chem
 from rdkit.Chem import Draw
@@ -14,7 +14,7 @@ from urllib.request import urlopen
 
 DrawingOptions.includeAtomNumbers = True
 
-translator = Translator()
+translated = GoogleTranslator(source='auto', target='en')
 
 class Ui_MainMenu(object):
     def setupUi(self, MainMenu):
@@ -23,7 +23,7 @@ class Ui_MainMenu(object):
         MainMenu.setMinimumSize(QtCore.QSize(400, 350))
         MainMenu.setMaximumSize(QtCore.QSize(1000, 500))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("app_icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainMenu.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
@@ -80,6 +80,7 @@ class Ui_MainMenu(object):
         self.widget.show()
         self.widget.move(centerPoint)
 
+
 class Ui_Window1(object):
     def setupUi(self, Window1):
         Window1.setObjectName("Window1")
@@ -132,6 +133,7 @@ class Ui_Window1(object):
             error.setText('Неправильно введена формула')
 
             sys.exit(error.exec_())
+
 
 class Ui_Window2(object):
     def setupUi(self, Window2):
@@ -195,6 +197,7 @@ class Ui_Window2(object):
 
             sys.exit(error.exec_())
 
+
 class Ui_Window3(object):
     def setupUi(self, Window3):
         Window3.setObjectName("Window3")
@@ -254,7 +257,7 @@ class Ui_Window3(object):
             atom = mendeleev.element(self.lineEdit.text())
             result = QMessageBox()
             result.setWindowTitle('Результат')
-            result.setText('Ответ: ' + '%.0f' % (mass / (compound.percentage_by_mass(atom.symbol)/100)) + 'г.')
+            result.setText('Ответ: ' + '%.0f' % (mass / (compound.percentage_by_mass(atom.symbol) / 100)) + 'г.')
             result.setStandardButtons(QMessageBox.Ok)
 
             result.exec_()
@@ -265,6 +268,7 @@ class Ui_Window3(object):
             error.setText('Неправильно введена формула')
 
             error.show()
+
 
 class Ui_Window4(object):
     def setupUi(self, Window4):
@@ -341,16 +345,17 @@ class Ui_Window4(object):
 
     def generate_image(self, text):
         try:
-            name = translator.translate(str(text), dest='en')
-            name = name.text.replace(' ', '')
+            # name = text
+            print(text)
+            name = translated.translate(str(text))
+            name = name.replace(' ', '')
             print(name)
-            url = 'http://cactus.nci.nih.gov/chemical/structure/' + name + '/smiles'
+            url = 'https://cactus.nci.nih.gov/chemical/structure/' + name + '/smiles'
             ans = urlopen(url).read().decode('utf8')
             url = 'https://cactus.nci.nih.gov/chemical/structure/' + name + '/formula'
             formula = urlopen(url).read().decode('utf8')
             url = 'https://cactus.nci.nih.gov/chemical/structure/' + name + '/twirl'
             html = urlopen(url).read().decode('utf8')
-            print(html)
 
             size = (self.label.geometry().size().width(), self.label.geometry().size().height())
             str(html).replace('700', str(self.label.geometry().size().width()))
@@ -380,6 +385,7 @@ class Ui_Window4(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     w = QtWidgets.QMainWindow()
     ui = Ui_MainMenu()
