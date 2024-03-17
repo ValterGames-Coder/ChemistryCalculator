@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDesktopWidget, QMessageBox
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtGui import QPixmap
 from PyQt5.Qt import QUrl
@@ -16,7 +16,9 @@ DrawingOptions.includeAtomNumbers = True
 
 translated = GoogleTranslator(source='auto', target='en')
 
+
 class Ui_MainMenu(object):
+
     def setupUi(self, MainMenu):
         MainMenu.setObjectName("MainMenu")
         MainMenu.resize(400, 350)
@@ -78,7 +80,6 @@ class Ui_MainMenu(object):
         self.widget = QtWidgets.QWidget()
         window.setupUi(self.widget)
         self.widget.show()
-        self.widget.move(centerPoint)
 
 
 class Ui_Window1(object):
@@ -391,7 +392,4 @@ if __name__ == "__main__":
     ui = Ui_MainMenu()
     ui.setupUi(w)
     w.show()
-    centerPoint = QDesktopWidget().availableGeometry().center()
-    w.frameGeometry().moveCenter(centerPoint)
-    w.move(centerPoint - w.frameGeometry().center())
     sys.exit(app.exec_())
