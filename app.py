@@ -125,14 +125,14 @@ class Ui_Window1(object):
             result.setText('Ответ: ' + '%.0f' % compound.molar_mass())
             result.setStandardButtons(QMessageBox.Ok)
 
-            sys.exit(result.exec_())
+            result.exec_()
         except:
             error = QMessageBox()
             error.setWindowTitle('Ошибка')
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            sys.exit(error.exec_())
+            error.exec_()
 
 
 class Ui_Window2(object):
@@ -188,14 +188,14 @@ class Ui_Window2(object):
             result.setText('Ответ: ' + '%.0f' % compound.percentage_by_mass(atom) + '%')
             result.setStandardButtons(QMessageBox.Ok)
 
-            sys.exit(result.exec_())
+            result.exec_()
         except:
             error = QMessageBox()
             error.setWindowTitle('Ошибка')
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            sys.exit(error.exec_())
+            error.exec_()
 
 
 class Ui_Window3(object):
@@ -267,7 +267,7 @@ class Ui_Window3(object):
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            error.show()
+            error.exec_()
 
 
 class Ui_Window4(object):
@@ -348,7 +348,7 @@ class Ui_Window4(object):
             # name = text
             print(text)
             name = translated.translate(str(text))
-            name = name.replace(' ', '')
+            # name = name.replace(' ', '')
             print(name)
             url = 'https://cactus.nci.nih.gov/chemical/structure/' + name + '/smiles'
             ans = urlopen(url).read().decode('utf8')
