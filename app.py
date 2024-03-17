@@ -56,8 +56,12 @@ class Ui_MainMenu(object):
         self.verticalLayout.addWidget(self.pushButton_4)
         MainMenu.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainMenu)
-        QtCore.QMetaObject.connectSlotsByName(MainMenu)
+        MainMenu.setWindowTitle("Chemistry Calculator")
+        self.pushButton.setText("Относительная молекулярная масса вещества")
+        self.pushButton_2.setText("Массовая доля вещества")
+        self.pushButton_3.setText("Расчет необходимой массы вещества для реакции")
+        self.pushButton_4.setText("Генерация рисунка органического вещества")
+        #QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
         self.w1 = Ui_Window1()
         self.w2 = Ui_Window2()
@@ -67,14 +71,6 @@ class Ui_MainMenu(object):
         self.pushButton_2.clicked.connect(lambda: self.show_new_window(self.w2))
         self.pushButton_3.clicked.connect(lambda: self.show_new_window(self.w3))
         self.pushButton_4.clicked.connect(lambda: self.show_new_window(self.w4))
-
-    def retranslateUi(self, MainMenu):
-        _translate = QtCore.QCoreApplication.translate
-        MainMenu.setWindowTitle(_translate("MainMenu", "Chemistry Calculator"))
-        self.pushButton.setText(_translate("MainMenu", "Относительная молекулярная масса вещества"))
-        self.pushButton_2.setText(_translate("MainMenu", "Массовая доля вещества"))
-        self.pushButton_3.setText(_translate("MainMenu", "Расчет необходимой массы вещества для реакции"))
-        self.pushButton_4.setText(_translate("MainMenu", "Генерация рисунка органического вещества"))
 
     def show_new_window(self, window):
         self.widget = QtWidgets.QWidget()
@@ -106,17 +102,11 @@ class Ui_Window1(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout.addWidget(self.pushButton_2)
         self.verticalLayout.addLayout(self.horizontalLayout)
-
-        self.retranslateUi(Window1)
-        QtCore.QMetaObject.connectSlotsByName(Window1)
-
+        Window1.setWindowTitle("Относительная молекулярная масса вещества")
+        self.lineEdit.setPlaceholderText("Введите форxулу вещества:")
+        self.pushButton_2.setText("Получить ответ")
+        #QtCore.QMetaObject.connectSlotsByName(Window1)
         self.pushButton_2.clicked.connect(self.result)
-
-    def retranslateUi(self, Window1):
-        _translate = QtCore.QCoreApplication.translate
-        Window1.setWindowTitle(_translate("Window1", "Относительная молекулярная масса вещества"))
-        self.lineEdit.setPlaceholderText(_translate("Window1", "Введите формулу вещества:"))
-        self.pushButton_2.setText(_translate("Window1", "Получить ответ"))
 
     def result(self):
         try:
@@ -126,14 +116,14 @@ class Ui_Window1(object):
             result.setText('Ответ: ' + '%.0f' % compound.molar_mass())
             result.setStandardButtons(QMessageBox.Ok)
 
-            result.exec_()
+            result.exec()
         except:
             error = QMessageBox()
             error.setWindowTitle('Ошибка')
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            error.exec_()
+            error.exec()
 
 
 class Ui_Window2(object):
@@ -168,17 +158,13 @@ class Ui_Window2(object):
         self.horizontalLayout.addWidget(self.pushButton_2)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Window2)
-        QtCore.QMetaObject.connectSlotsByName(Window2)
+        Window2.setWindowTitle("Массовая доля вещества")
+        self.lineEdit_2.setPlaceholderText("Введите формулу вещества:")
+        self.lineEdit.setPlaceholderText("Введите атом:")
+        self.pushButton_2.setText("Получить ответ")
+        #QtCore.QMetaObject.connectSlotsByName(Window2)
 
         self.pushButton_2.clicked.connect(self.result)
-
-    def retranslateUi(self, Window2):
-        _translate = QtCore.QCoreApplication.translate
-        Window2.setWindowTitle(_translate("Window2", "Массовая доля вещества"))
-        self.lineEdit_2.setPlaceholderText(_translate("Window2", "Введите формулу вещества:"))
-        self.lineEdit.setPlaceholderText(_translate("Window2", "Введите атом:"))
-        self.pushButton_2.setText(_translate("Window2", "Получить ответ"))
 
     def result(self):
         try:
@@ -189,14 +175,14 @@ class Ui_Window2(object):
             result.setText('Ответ: ' + '%.0f' % compound.percentage_by_mass(atom) + '%')
             result.setStandardButtons(QMessageBox.Ok)
 
-            result.exec_()
+            result.exec()
         except:
             error = QMessageBox()
             error.setWindowTitle('Ошибка')
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            error.exec_()
+            error.exec()
 
 
 class Ui_Window3(object):
@@ -238,18 +224,15 @@ class Ui_Window3(object):
         self.horizontalLayout.addWidget(self.pushButton_2)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Window3)
-        QtCore.QMetaObject.connectSlotsByName(Window3)
+        #QtCore.QMetaObject.connectSlotsByName(Window3)
 
         self.pushButton_2.clicked.connect(self.result)
 
-    def retranslateUi(self, Window3):
-        _translate = QtCore.QCoreApplication.translate
-        Window3.setWindowTitle(_translate("Window3", "Расчет необходимой массы вещества для реакции"))
-        self.lineEdit_2.setPlaceholderText(_translate("Window3", "Введите формулу вещества:"))
-        self.lineEdit.setPlaceholderText(_translate("Window3", "Введите атом"))
-        self.lineEdit_3.setPlaceholderText(_translate("Window3", "Введите массу атома"))
-        self.pushButton_2.setText(_translate("Window3", "Получить ответ"))
+        Window3.setWindowTitle("Расчет необходимой массы вещества для реакции")
+        self.lineEdit_2.setPlaceholderText("Введите формулу вещества:")
+        self.lineEdit.setPlaceholderText("Введите атом")
+        self.lineEdit_3.setPlaceholderText("Введите массу атома")
+        self.pushButton_2.setText("Получить ответ")
 
     def result(self):
         try:
@@ -261,14 +244,14 @@ class Ui_Window3(object):
             result.setText('Ответ: ' + '%.0f' % (mass / (compound.percentage_by_mass(atom.symbol) / 100)) + 'г.')
             result.setStandardButtons(QMessageBox.Ok)
 
-            result.exec_()
+            result.exec()
         except:
             error = QMessageBox()
             error.setWindowTitle('Ошибка')
             error.setIcon(QMessageBox.Warning)
             error.setText('Неправильно введена формула')
 
-            error.exec_()
+            error.exec()
 
 
 class Ui_Window4(object):
@@ -329,20 +312,17 @@ class Ui_Window4(object):
         self.lineEdit.setObjectName("lineEdit")
         self.gridLayout.addWidget(self.lineEdit, 1, 0, 1, 1)
 
-        self.retranslateUi(Window4)
         self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(Window4)
+        #QtCore.QMetaObject.connectSlotsByName(Window4)
 
         self.pushButton_2.clicked.connect(lambda: self.generate_image(self.lineEdit.text()))
 
-    def retranslateUi(self, Window4):
-        _translate = QtCore.QCoreApplication.translate
-        Window4.setWindowTitle(_translate("Window4", "Генерация рисунка органического вещества"))
-        self.pushButton_2.setText(_translate("Window4", "Сгенерировать схему"))
-        self.label_2.setText(_translate("Window4", "Химическая формула"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Window4", "2D"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Window4", "3D"))
-        self.lineEdit.setPlaceholderText(_translate("Window4", "Введите название вещества:"))
+        Window4.setWindowTitle("Генерация рисунка органического вещества")
+        self.pushButton_2.setText("Сгенерировать схему")
+        self.label_2.setText("Химическая формула")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),"2D")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), "3D")
+        self.lineEdit.setPlaceholderText( "Введите название вещества:")
 
     def generate_image(self, text):
         try:
