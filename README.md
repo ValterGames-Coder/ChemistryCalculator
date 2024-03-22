@@ -6,6 +6,15 @@
 1. Установите windows_build.zip с https://github.com/ValterGames-Coder/ChemistryCalculator/releases
 2. Распакуйте папку
 3. Запустите app.exe
+Если у вас Windows 7, то выполните допольнительные шаги:
+4. Откройте cmd.exe от имени администратора
+5. ```bash
+   cd путь\до\папки_проекта
+   ```
+6. ```bash
+   windows7.cmd
+   ```
+7. Запустите app.exe
 ### Другие ОС (с установленным Python)
 1. ```bash
    git clone https://github.com/ValterGames-Coder/ChemistryProject.git
